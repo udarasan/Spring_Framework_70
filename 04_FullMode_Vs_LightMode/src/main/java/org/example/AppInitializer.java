@@ -12,12 +12,6 @@ public class AppInitializer {
         context.register(AppConfig.class);
         context.refresh();
 
-        SpringBeanTwo bean1 = context.getBean(SpringBeanTwo.class);
-        SpringBeanTwo bean2 = context.getBean(SpringBeanTwo.class);
-        System.out.println(bean1);
-        System.out.println(bean2);
-
-
 
         context.registerShutdownHook();
 

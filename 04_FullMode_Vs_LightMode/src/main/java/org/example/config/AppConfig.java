@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Scope;
 @ComponentScan(basePackages = "org.example.bean")
 public class AppConfig {
     //Inter bean dependency
-   @Bean
+   /*@Bean
     public SpringBeanTwo springBeanTwo() {
        SpringBeanThree springBeanThree1 = springBeanThree();
        SpringBeanThree springBeanThree2 = springBeanThree();
@@ -21,5 +21,5 @@ public class AppConfig {
    @Bean
     public SpringBeanThree springBeanThree() {
        return new SpringBeanThree();
-   }
+   }*/
 }
