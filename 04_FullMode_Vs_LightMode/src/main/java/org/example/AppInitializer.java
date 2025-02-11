@@ -1,8 +1,5 @@
 package org.example;
 
-import org.example.bean.SpringBeanOne;
-import org.example.bean.SpringBeanTwo;
-import org.example.config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class AppInitializer {

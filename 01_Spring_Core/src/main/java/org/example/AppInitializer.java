@@ -1,12 +1,9 @@
 package org.example;
 
 import org.example.bean.MyConnection;
-import org.example.bean.SpringBean;
 import org.example.bean.TestBean1;
 import org.example.bean.TestBean2;
-import org.example.config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Scope;
 
 public class AppInitializer {
     public static void main(String[] args) {

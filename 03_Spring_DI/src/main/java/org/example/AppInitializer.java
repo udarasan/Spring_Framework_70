@@ -1,8 +1,6 @@
 package org.example;
 
 
-import org.example.bean.Boy;
-import org.example.config.AppConfig;
 import org.example.di.Test2;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
