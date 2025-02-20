@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/customer")
+@RequestMapping(value = "api/v1/customer")
 public class CustomerController {
     //property injection
     @Autowired

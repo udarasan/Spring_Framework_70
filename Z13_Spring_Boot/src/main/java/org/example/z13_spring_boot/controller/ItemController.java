@@ -2,6 +2,7 @@ package org.example.z13_spring_boot.controller;
 
 import org.example.z13_spring_boot.dto.ItemDTO;
 import org.example.z13_spring_boot.service.impl.ItemServiceImpl;
+import org.example.z13_spring_boot.utill.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +16,24 @@ public class ItemController {
     private ItemServiceImpl itemService;
 
     @PostMapping( value = "save",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Boolean saveItem(@RequestBody ItemDTO itemDTO) {
-        return itemService.addItem(itemDTO);
-
+    public ResponseUtil saveItem(@RequestBody ItemDTO itemDTO) {
+        itemService.addItem(itemDTO);
+        return new ResponseUtil(200,"Item is saved",null);
     }
 
     @PutMapping(value = "update")
-    public Boolean updateItem(@RequestBody ItemDTO itemDTO) {
-        return itemService.updateItem(itemDTO);
+    public ResponseUtil updateItem(@RequestBody ItemDTO itemDTO) {
+        itemService.updateItem(itemDTO);
+        return new ResponseUtil(200,"Item is updated",null);
     }
+
     @DeleteMapping(path = "delete/{id}")
-    public Boolean deleteItem(@PathVariable("id") int id) {
+    public ResponseUtil deleteItem(@PathVariable("id") int id) {
         itemService.deleteItem(id);
-        return true;
+        return new ResponseUtil(200,"Item is deleted",null) ;
     }
     @GetMapping("getAll")
-    public List<ItemDTO> getAllItems() {
-        return itemService.getAllItems();
+    public ResponseUtil getAllItems() {
+        return new ResponseUtil(200,"Success",itemService.getAllItems());
     }
 }
