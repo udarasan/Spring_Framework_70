@@ -3,6 +3,8 @@ package org.example.z13_spring_boot.service;
 import org.example.z13_spring_boot.dto.ItemDTO;
 import org.example.z13_spring_boot.entity.Item;
 import org.example.z13_spring_boot.repo.ItemRepo;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +15,11 @@ import java.util.List;
 public class ItemService {
     @Autowired
     private ItemRepo itemRepo;
+    @Autowired
+    private ModelMapper modelMapper;
 
     public Boolean addItem(ItemDTO itemDTO) {
-        itemRepo.save(
-                new Item(
-                        itemDTO.getCode(),
-                        itemDTO.getName(),
-                        itemDTO.getQuantity(),
-                        itemDTO.getPrice()));
+        itemRepo.save(modelMapper.map(itemDTO, Item.class));
         return true;
     }
 
@@ -30,23 +29,13 @@ public class ItemService {
 
     public Boolean updateItem(ItemDTO itemDTO) {
         if (itemRepo.existsById(itemDTO.getCode())){
-            itemRepo.save(
-                    new Item(
-                            itemDTO.getCode(),
-                            itemDTO.getName(),
-                            itemDTO.getQuantity(),
-                            itemDTO.getPrice()));
+            itemRepo.save(modelMapper.map(itemDTO, Item.class));
             return true;
         }
         return false;
     }
 
     public List<ItemDTO> getAllItems() {
-        List<Item> items = itemRepo.findAll();
-        List<ItemDTO> itemDTOs = new ArrayList<>();
-        for (Item item : items) {
-            itemDTOs.add(new ItemDTO(item.getCode(), item.getName(), item.getQuantity(), item.getPrice()));
-        }
-        return itemDTOs;
+        return modelMapper.map(itemRepo.findAll(), new TypeToken<List<ItemDTO>>(){}.getType());
     }
 }
