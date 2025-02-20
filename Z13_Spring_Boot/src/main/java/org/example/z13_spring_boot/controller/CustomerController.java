@@ -1,8 +1,10 @@
 package org.example.z13_spring_boot.controller;
 
 import org.example.z13_spring_boot.dto.CustomerDTO;
-import org.example.z13_spring_boot.service.CustomerServiceImpl;
+import org.example.z13_spring_boot.service.impl.CustomerServiceImpl;
+import org.example.z13_spring_boot.utill.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,14 +17,19 @@ public class CustomerController {
     private CustomerServiceImpl customerService;
 
     @PostMapping(path = "save")
-    public Boolean getCustomer(@RequestBody CustomerDTO customerDTO) {
+    public ResponseUtil getCustomer(@RequestBody CustomerDTO customerDTO) {
         boolean res= customerService.saveCustomer(customerDTO);
-        return res;
+        if (res){
+            return new ResponseUtil
+                    (201,"Customer is saved",null);
+        }return new ResponseUtil
+                (409,"already exist",null);
     }
     @GetMapping(path ="getAll")
     public List<CustomerDTO> getAllCustomers() {
         return customerService.getAllCustomers();
     }
+
     @PutMapping(path = "update")
     public Boolean updateCustomer(@RequestBody CustomerDTO customerDTO) {
         boolean res= customerService.updateCustomer(customerDTO);

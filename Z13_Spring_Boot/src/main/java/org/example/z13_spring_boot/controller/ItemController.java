@@ -1,7 +1,7 @@
 package org.example.z13_spring_boot.controller;
 
 import org.example.z13_spring_boot.dto.ItemDTO;
-import org.example.z13_spring_boot.service.ItemServiceImpl;
+import org.example.z13_spring_boot.service.impl.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
