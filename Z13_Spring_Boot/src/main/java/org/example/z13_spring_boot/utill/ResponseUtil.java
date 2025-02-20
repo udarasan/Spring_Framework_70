@@ -1,5 +1,6 @@
 package org.example.z13_spring_boot.utill;
 
+
 public class ResponseUtil {
     private int code;
     private String message;
