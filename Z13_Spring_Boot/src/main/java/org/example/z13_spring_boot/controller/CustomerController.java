@@ -18,28 +18,18 @@ public class CustomerController {
 
     @PostMapping(path = "save")
     public ResponseUtil getCustomer(@RequestBody CustomerDTO customerDTO) {
-        boolean res= customerService.saveCustomer(customerDTO);
-        if (res){
-            return new ResponseUtil
-                    (201,"Customer is saved",null);
-        }return new ResponseUtil
-                (409,"already exist",null);
+        customerService.saveCustomer(customerDTO);
+        return new ResponseUtil(201,"Customer is saved",null);
     }
     @GetMapping(path ="getAll")
     public ResponseUtil getAllCustomers() {
-        return new ResponseUtil(
-                        200,
-                        "success",
-                        customerService.getAllCustomers());
+        return new ResponseUtil(200, "success", customerService.getAllCustomers());
     }
 
     @PutMapping(path = "update")
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO) {
-        boolean res= customerService.updateCustomer(customerDTO);
-        if (res){
-            return new ResponseUtil(200,"Customer is updated",null);
-        }
-        return new ResponseUtil(404,"Customer not found",null);
+        customerService.updateCustomer(customerDTO);
+        return new ResponseUtil(200,"Customer is updated",null);
     }
     @DeleteMapping(path = "delete/{id}")
     public ResponseUtil deleteCustomer(@PathVariable("id") int id) {
