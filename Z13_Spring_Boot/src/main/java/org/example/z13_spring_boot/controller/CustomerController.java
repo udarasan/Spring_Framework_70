@@ -26,18 +26,25 @@ public class CustomerController {
                 (409,"already exist",null);
     }
     @GetMapping(path ="getAll")
-    public List<CustomerDTO> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public ResponseUtil getAllCustomers() {
+        return new ResponseUtil(
+                        200,
+                        "success",
+                        customerService.getAllCustomers());
     }
 
     @PutMapping(path = "update")
-    public Boolean updateCustomer(@RequestBody CustomerDTO customerDTO) {
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO) {
         boolean res= customerService.updateCustomer(customerDTO);
-        return res;
+        if (res){
+            return new ResponseUtil(200,"Customer is updated",null);
+        }
+        return new ResponseUtil(404,"Customer not found",null);
     }
     @DeleteMapping(path = "delete/{id}")
-    public Boolean deleteCustomer(@PathVariable("id") int id) {
-        return customerService.deleteCustomer(id);
+    public ResponseUtil deleteCustomer(@PathVariable("id") int id) {
+        customerService.deleteCustomer(id);
+        return new ResponseUtil(200,"Customer is deleted",null);
     }
 
 }
