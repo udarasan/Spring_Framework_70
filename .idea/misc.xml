@@ -16,10 +16,12 @@
         <option value="$PROJECT_DIR$/10_Back_End/pom.xml" />
         <option value="$PROJECT_DIR$/12_Spring_Data_JPA/pom.xml" />
         <option value="$PROJECT_DIR$/Z13_Spring_Boot/pom.xml" />
+        <option value="$PROJECT_DIR$/Z14_Spring_Security/pom.xml" />
+        <option value="$PROJECT_DIR$/15_Spring_Boot_Bean_Validation/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
